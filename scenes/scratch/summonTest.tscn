@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://particles/Summon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/scratch/summonTest.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleMesh" id=1]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.76656, 0.642172, 0, -0.642172, 0.76656, 0, 1.85733, 2.03942 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Summon" parent="." instance=ExtResource( 1 )]

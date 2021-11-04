@@ -1,0 +1,149 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=1]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=2]
+[ext_resource path="res://models/terrains/data.hterrain" type="Resource" id=3]
+[ext_resource path="res://materials/slot0_normal_roughness.packed_tex" type="Texture" id=4]
+[ext_resource path="res://materials/slot0_albedo_bump.packed_tex" type="Texture" id=5]
+[ext_resource path="res://models/kenneyMedievalKit/Models/GLTF format/wallFortified_half.glb" type="PackedScene" id=6]
+[ext_resource path="res://scenes/structures/wallFortified_half.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/structures/tower.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/structures/floor_stairs.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/structures/randomBridge.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/structures/structure_wall.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/structures/structure_poles.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/player/KinematicPlayer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scripts/cameras/camera.gd" type="Script" id=14]
+[ext_resource path="res://particles/Summon.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+mode = 0
+textures = [ [ ExtResource( 5 ) ], [ ExtResource( 4 ) ] ]
+
+[node name="World" type="Spatial"]
+
+[node name="HTerrain" type="Spatial" parent="."]
+script = ExtResource( 2 )
+_terrain_data = ExtResource( 3 )
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource( 1 )
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Plane( 1, 0, 0, 0 )
+
+[node name="structure_wall" parent="HTerrain" instance=ExtResource( 11 )]
+transform = Transform( 1.34024, 0, 0, 0, 1.34024, 0, 0, 0, 1.34024, 45.1675, -0.256259, 24.2756 )
+
+[node name="structure_wall2" parent="HTerrain" instance=ExtResource( 11 )]
+transform = Transform( 1.34024, 0, 0, 0, 1.34024, 0, 0, 0, 1.34024, 41.8854, -0.256259, 26.5019 )
+
+[node name="structure_wall3" parent="HTerrain" instance=ExtResource( 11 )]
+transform = Transform( 1.34024, 0, 0, 0, 1.34024, 0, 0, 0, 1.34024, 45.1675, -0.256259, 28.4955 )
+
+[node name="structure_wall4" parent="HTerrain" instance=ExtResource( 11 )]
+transform = Transform( 1.34024, 0, 0, 0, 1.34024, 0, 0, 0, 1.34024, 47.2865, -0.235575, 24.2789 )
+
+[node name="structure_wall5" parent="HTerrain" instance=ExtResource( 11 )]
+transform = Transform( 1.34024, 0, 0, 0, 1.34024, 0, 0, 0, 1.34024, 47.8836, 0.157237, 30.7262 )
+
+[node name="structure_wall6" parent="HTerrain" instance=ExtResource( 11 )]
+transform = Transform( 1.34024, 0, 0, 0, 1.34024, 0, 0, 0, 1.34024, 45.1675, -0.256259, 33.1241 )
+
+[node name="floor_stairs" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 0.00284636, 12.0514 )
+
+[node name="floor_stairs2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 0.278403, 11.2783 )
+
+[node name="floor_stairs3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 0.54305, 10.5238 )
+
+[node name="floor_stairs4" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 0.818607, 9.75073 )
+
+[node name="floor_stairs5" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 1.09257, 8.98842 )
+
+[node name="floor_stairs6" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 1.36813, 8.2153 )
+
+[node name="floor_stairs7" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 1.63278, 7.46087 )
+
+[node name="floor_stairs8" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.746, 1.90833, 6.68776 )
+
+[node name="tower" parent="." instance=ExtResource( 8 )]
+transform = Transform( 2.72294, 0, 0, 0, 2.72294, 0, 0, 0, 2.72294, 23.7351, -0.107811, 5.01231 )
+
+[node name="wallFortified_half" parent="tower" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475029, 0, 0 )
+
+[node name="wallFortified_half2" parent="tower" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475029, 0, 1.00818 )
+
+[node name="wallFortified_half3" parent="tower" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475029, 0, 2.01458 )
+
+[node name="wallFortified_half" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7034, -0.0517309, 10.0538 )
+
+[node name="wallFortified_half2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, -0.0517309, 11.0535 )
+
+[node name="wallFortified_half3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, -0.0517309, 12.0619 )
+
+[node name="wallFortified_half4" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, -0.0517309, 7.023 )
+
+[node name="wallFortified_half5" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, -0.0517309, 8.02439 )
+
+[node name="wallFortified_half6" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, -0.0517309, 9.03273 )
+
+[node name="wallFortified_half7" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, 0.945912, 7.023 )
+
+[node name="wallFortified_half10" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, 1.9332, 7.023 )
+
+[node name="wallFortified_half8" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, 0.945912, 8.02439 )
+
+[node name="wallFortified_half9" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7087, 0.945912, 9.03273 )
+
+[node name="randomBridge" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.403093, 0, 0, 0, 0.403093, 0, 0, 0, 0.403093, 35.5199, 0, 42.6368 )
+
+[node name="structure_poles" parent="." instance=ExtResource( 12 )]
+transform = Transform( 3.15897, 0, 0, 0, 3.15897, 0, 0, 0, 3.15897, 26.3703, 0.445121, 25.1826 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.952656, 0.30405, 0, -0.30405, 0.952656, 23.2951, 6.66042, -14.8867 )
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.584, 6.04877, 11.8521 )
+current = true
+script = ExtResource( 14 )
+camHeight = 10.0
+theta = 1.0
+orthogonal = true
+orthoBoxWidth = 13.5
+
+[node name="player" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9836, 0, 6.66699 )
+
+[node name="Summon" parent="player" instance=ExtResource( 15 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.999121, 0 )
